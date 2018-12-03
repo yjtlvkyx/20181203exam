@@ -32,3 +32,8 @@ gulp.task("server", () => {
         }
     }))
 })
+
+//监听事件  //成功
+gulp.task("watch", () => {
+    return gulp.watch("./src/scss/*.scss", gulp.series("devSass", "devJs", "server"));
+})
