@@ -26,3 +26,15 @@ body {
         margin: 4px;
     }
 }
+
+.main {
+    width: 100%;
+    flex: 7;
+    background: red;
+}
+
+.footer {
+    width: 100%;
+    flex: 1;
+    background: rebeccapurple;
+}

@@ -37,3 +37,6 @@ gulp.task("server", () => {
 gulp.task("watch", () => {
     return gulp.watch("./src/scss/*.scss", gulp.series("devSass", "devJs", "server"));
 })
+
+//整合任务  //成功
+gulp.task("default", gulp.series("devSass", "devJs", "server", "watch"));
