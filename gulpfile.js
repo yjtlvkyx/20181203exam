@@ -4,7 +4,10 @@ const gulp = require("gulp"),
     cleanCss = require("gulp-clean-css"),
     babel = require("gulp-babel"),
     uglify = require("gulp-uglify"),
-    concat = require("gulp-concat");
+    concat = require("gulp-concat"),
+    fs = require("fs"),
+    path = require("path"),
+    url = require("url");
 
 //编译sass文件  //成功
 gulp.task("devSass", () => {
@@ -26,9 +29,18 @@ gulp.task("devJs", () => {
 gulp.task("server", () => {
     return gulp.src("./src/").pipe(server({
         port: 8024,
+        open: true,
         middleware: function(req, res, next) {
             console.log(44)
-            res.end("")
+            if (req.url == "/favicon.ico") {
+                res.end("")
+                return;
+            }
+            let pathname = url.parse(req.url).pathname;
+            pathname = req.url == "/" ? "./index.html" : pathname;
+            pathname = path.join(__dirname, "src", pathname)
+            let files = fs.readFileSync(pathname)
+            res.end(files)
         }
     }))
 })
