@@ -1,0 +1,1 @@
+let spa = document.querySelectorAll(".header span");

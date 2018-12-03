@@ -1,0 +1,1 @@
+let head = document.getElementsByClassName("header")[0];
